@@ -5,10 +5,9 @@ import RequireAuth from "../components/RequireAuth";
 import {BrowserRouter, Routes, Route} from "react-router-dom";
 import SignupPage from "../pages/SignupPage";
 import Container from 'react-bootstrap/Container';
-import Nav from 'react-bootstrap/Nav';
 import Navbar from 'react-bootstrap/Navbar';
-import authStore from "../stores/authStore";
-
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { faFaceSmile } from '@fortawesome/free-solid-svg-icons'
 
 
 
@@ -60,8 +59,13 @@ function App() {
       <BrowserRouter>
         <Navbar bg="dark" variant="dark" expand="sm">
           <Container>
-            <Navbar.Brand href="/">City of Happy Citizens</Navbar.Brand>
+            <Navbar.Brand href="/"> 
+              <FontAwesomeIcon icon={faFaceSmile} />
+            <FontAwesomeIcon icon="fa-regular fa-face-smile" /> 
+            &nbsp;
+            City of Happy Citizens</Navbar.Brand>
             <Navbar.Toggle aria-controls="basic-navbar-nav" />
+            {/*
             <Navbar.Collapse id="basic-navbar-nav">
               <Nav className="me-auto">
                 <Nav.Link href="/">Home</Nav.Link>
@@ -70,9 +74,10 @@ function App() {
               </Nav>
             </Navbar.Collapse>            
             
-            {/* {userTrail}
+             {userTrail}
 
-            {logoutButton} */}
+            {logoutButton} 
+            */}
             
           </Container>
         </Navbar>
@@ -84,62 +89,6 @@ function App() {
           <Route path="*" element={<h1>404</h1>} />
         </Routes>
       </BrowserRouter>
-
-
-      {/* {isLoggedIn ?
-      <BrowserRouter>
-        <Navbar bg="dark" variant="dark" expand="sm">
-          <Container>
-            <Navbar.Brand href="/">City of Happy Citizens</Navbar.Brand>
-            <Navbar.Toggle aria-controls="basic-navbar-nav" />
-            <Navbar.Collapse className="justify-content-end">
-            <Navbar.Text >
-                Logged in as: 
-                &nbsp;
-                {store.user.fname}
-                &nbsp;
-                {store.user.lname}
-                &nbsp;
-              </Navbar.Text>
-            </Navbar.Collapse>
-            <Nav variant="pills" defaultActiveKey="/logout">
-              <Nav.Link href="/logout">Log Out</Nav.Link>
-            </Nav>
-          </Container>
-        </Navbar>
-        <Routes>
-          <Route index element={<RequireAuth><PropsPage /></RequireAuth>} />
-          <Route path="/login" element={<LoginPage />} />
-          <Route path="/signup" element={<SignupPage />} />
-          <Route path="/logout" element={<LogoutPage />} />
-          <Route path="*" element={<h1>404</h1>} />
-        </Routes>
-      </BrowserRouter>
-      :
-      <BrowserRouter>
-        <Navbar bg="dark" variant="dark" expand="sm">
-          <Container>
-            <Navbar.Brand href="/">City of Happy Citizens</Navbar.Brand>
-            <Navbar.Toggle aria-controls="basic-navbar-nav" />
-            <Navbar.Collapse id="basic-navbar-nav">
-              <Nav className="me-auto">
-                <Nav.Link href="/">Home</Nav.Link>
-                <Nav.Link href="/login">Login</Nav.Link>
-                <Nav.Link href="/signup">Signup</Nav.Link>
-              </Nav>
-            </Navbar.Collapse>            
-          </Container>
-        </Navbar>
-        <Routes>
-          <Route index element={<RequireAuth><PropsPage /></RequireAuth>} />
-          <Route path="/login" element={<LoginPage />} />
-          <Route path="/signup" element={<SignupPage />} />
-          <Route path="/logout" element={<LogoutPage />} />
-          <Route path="*" element={<h1>404</h1>} />
-        </Routes>
-      </BrowserRouter>
-      } */}
-
     </div>
   );
 }

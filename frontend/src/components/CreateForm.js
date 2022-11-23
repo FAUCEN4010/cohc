@@ -7,7 +7,8 @@ export default function CreateForm() {
 
   return (
     <div>
-      <h2>Add New Propery Record</h2>
+      <p><br /><br /></p>
+      <h2>Add New Propery</h2>
       <form onSubmit={store.createProp}>
       <label htmlFor="item">Item</label>
         <input

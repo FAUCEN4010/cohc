@@ -17,6 +17,21 @@ const propsStore = create((set) => ({
     dateAquired: "",
   },
 
+  fetchUser: async () => {
+    // Fetch the user
+    const res = await axios.get("/user");
+
+    // Set to state
+    // set({ user: res.data.user });        
+
+    set({ user: {
+        fname: res.data.user.fname,
+        lname: res.data.user.lname,
+        dob: res.data.user.dob,
+        email: res.data.user.email,
+    }});
+  },
+  
   fetchProps: async () => {
     // Fetch the props
     const res = await axios.get("/props");
