@@ -4,7 +4,6 @@ import LogoutPage from "../pages/LogoutPage";
 import RequireAuth from "../components/RequireAuth";
 import {BrowserRouter, Routes, Route} from "react-router-dom";
 import SignupPage from "../pages/SignupPage";
-import Container from 'react-bootstrap/Container';
 import Navbar from 'react-bootstrap/Navbar';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faFaceSmile } from '@fortawesome/free-solid-svg-icons'
@@ -57,14 +56,14 @@ function App() {
 
     <div className="App">
       <BrowserRouter>
-        <Navbar bg="dark" variant="dark" expand="sm">
-          <Container>
-            <Navbar.Brand href="/"> 
+        <Navbar bg="dark" variant="dark" expand="lg">
+          <div className="main-container">
+            <Navbar.Brand href="/" > 
               <FontAwesomeIcon icon={faFaceSmile} />
-            <FontAwesomeIcon icon="fa-regular fa-face-smile" /> 
-            &nbsp;
-            City of Happy Citizens</Navbar.Brand>
-            <Navbar.Toggle aria-controls="basic-navbar-nav" />
+            
+              &nbsp;
+              City of Happy Citizens</Navbar.Brand>
+              <Navbar.Toggle aria-controls="basic-navbar-nav" />
             {/*
             <Navbar.Collapse id="basic-navbar-nav">
               <Nav className="me-auto">
@@ -74,12 +73,12 @@ function App() {
               </Nav>
             </Navbar.Collapse>            
             
-             {userTrail}
+            {userTrail}
 
             {logoutButton} 
             */}
             
-          </Container>
+          </div>
         </Navbar>
         <Routes>
           <Route index element={<RequireAuth><PropsPage /></RequireAuth>} />

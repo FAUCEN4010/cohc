@@ -12,20 +12,20 @@ export default function Prop({ prop }) {
   return (
     <Container fluid>
       <Row>
-        <Col>
+        <Col xs={4}>
           <div key={prop._id}>{prop.item}</div>
         </Col>
-        <Col>
+        <Col xs={2}>
           <div>${prop.dollarVal}.00</div>
         </Col>
-        <Col>
+        <Col xs={4}>
           <div>{new Date(prop.dateAquired).toLocaleDateString('en-us', {year: 'numeric', month: 'short', day: 'numeric'})}</div>
         </Col>
-        <Col>
+        <Col xs={1} className="text-right">
         <Button size="sm" onClick={() => store.toggleUpdate(prop)}>Update</Button>
         </Col>
-        <Col>
-        <Button size="sm" onClick={() => store.deleteProp(prop._id)}>Delete</Button>
+        <Col xs={1}>
+        <Button className="btn-danger" size="sm" onClick={() => store.deleteProp(prop._id)}>Delete</Button>
         </Col>
       </Row>
     </Container>

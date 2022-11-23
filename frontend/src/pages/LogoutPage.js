@@ -9,7 +9,7 @@ export default function LogoutPage() {
     }, []);
 
     return (
-        <div class="text-center"><br /><br />
+        <div className="text-center"><br /><br />
         You are now logged out.<br /><br />
         You can log back in <a href="/login">here</a>.
         </div>

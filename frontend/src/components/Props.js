@@ -32,20 +32,17 @@ export default function Props() {
         </Row>
 
       <Row>
-        <Col>
+        <Col xs={4}>
           <h6>Item</h6>
         </Col>
-        <Col>
+        <Col xs={2}>
         <h6>Value</h6>
         </Col>
-        <Col>
+        <Col xs={4}>
         <h6>Date Aquired</h6>
         </Col>
-        <Col>
-          
-        </Col>
-        <Col>
-          
+        <Col xs={2}>
+        <h6 className="text-center">Actions</h6>
         </Col>
       </Row>
 

@@ -6,36 +6,57 @@ export default function CreateForm() {
   if (store.updateForm._id) return <></>;
 
   return (
-    <div>
-      <p><br /><br /></p>
-      <h2>Add New Propery</h2>
-      <form onSubmit={store.createProp}>
-      <label htmlFor="item">Item</label>
-        <input
+
+<div>
+
+<form onSubmit={store.createProp}>
+<br /><br />
+  <h3 className="text-center">Add New Property</h3>
+  <br />
+
+
+  <div className="form-outline mb-4 text-center" >
+  <label className="form-label" htmlFor="item">Item: &nbsp;</label>
+  <input
           onChange={store.updateCreateFormField}
           value={store.createForm.item}
           name="item"
           type="text"
+          required
         />
-        <br />
-        <label htmlFor="Value">Value</label>
-        <input
+  </div>
+
+
+  <div className="form-outline mb-4 text-center">
+  <label className="form-label" htmlFor="value">Value: &nbsp;</label>
+  <input
           onChange={store.updateCreateFormField}
           value={store.createForm.dollarVal}
           name="dollarVal"
           type="number"
+          required
         />
-        <br />
-        <label htmlFor="dateAquired">Date Aquired</label>
-        <input
+  </div>
+
+  <div className="form-outline mb-4 text-center">
+  <label className="form-label" htmlFor="dateAquired">Date Aquired: &nbsp;</label>
+  <input
           onChange={store.updateCreateFormField}
           value={store.createForm.dateAquired}
           name="dateAquired"
           type="date"
+          required
         />
-        <br />
-        <button type="submit">Create</button>
-      </form>
+  </div>
+
+  <div className="text-center">
+    <button type="submit" className="btn btn-primary btn-block mb-4 text-center">Add Property</button>
     </div>
+
+    <div><br /><br /></div>
+
+</form>
+
+</div>
   );
 }
