@@ -9,17 +9,30 @@ export default function CreateForm() {
     <div>
       <h2>Add New Propery Record</h2>
       <form onSubmit={store.createProp}>
+      <label htmlFor="item">Item</label>
         <input
           onChange={store.updateCreateFormField}
-          value={store.createForm.title}
-          name="title"
+          value={store.createForm.item}
+          name="item"
+          type="text"
         />
         <br />
-        <textarea
+        <label htmlFor="Value">Value</label>
+        <input
           onChange={store.updateCreateFormField}
-          value={store.createForm.body}
-          name="body"
+          value={store.createForm.dollarVal}
+          name="dollarVal"
+          type="number"
         />
+        <br />
+        <label htmlFor="dateAquired">Date Aquired</label>
+        <input
+          onChange={store.updateCreateFormField}
+          value={store.createForm.dateAquired}
+          name="dateAquired"
+          type="date"
+        />
+        <br />
         <button type="submit">Create</button>
       </form>
     </div>

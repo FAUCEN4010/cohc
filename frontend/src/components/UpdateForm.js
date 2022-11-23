@@ -11,13 +11,13 @@ export default function UpdateForm() {
       <form onSubmit={store.updateProp}>
         <input
           onChange={store.handleUpdateFieldChange}
-          value={store.updateForm.title}
-          name="title"
+          value={store.updateForm.item}
+          name="item"
         />
         <textarea
           onChange={store.handleUpdateFieldChange}
-          value={store.updateForm.body}
-          name="body"
+          value={store.updateForm.dollarVal}
+          name="dollarVal"
         />
         <button type="submit">Update prop</button>
       </form>

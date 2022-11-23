@@ -34,12 +34,13 @@ const fetchProp = async (req, res) => {
 const createProp = async (req, res) => {
   try {
   // Get the sent in data off request body
-  const { title, body } = req.body;
+  const { item, dollarVal, dateAquired } = req.body;
 
   // Create a prop with it
   const prop = await Prop.create({
-    title,
-    body,
+    item,
+    dollarVal,
+    dateAquired,
     user: req.user._id,
   });
 
@@ -57,7 +58,7 @@ const updateProp = async (req, res) => {
   const propId = req.params.id;
 
   // Get the data off the req body
-  const { title, body } = req.body;
+  const { item, dollarVal, dateAquired } = req.body;
 
   // Find and update the record
   await Prop.findOneAndUpdate(
@@ -65,8 +66,9 @@ const updateProp = async (req, res) => {
     _id: propId, 
     user: req.user._id
     }, {
-    title,
-    body,
+    item,
+    dollarVal,
+    dateAquired,
     }
   );
 

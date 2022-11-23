@@ -5,14 +5,16 @@ const propsStore = create((set) => ({
   props: null,
 
   createForm: {
-    title: "",
-    body: "",
+    item: "",
+    dollarVal: "",
+    dateAquired: "",
   },
 
   updateForm: {
     _id: null,
-    title: "",
-    body: "",
+    item: "",
+    dollarVal: "",
+    dateAquired: "",
   },
 
   fetchProps: async () => {
@@ -45,8 +47,9 @@ const propsStore = create((set) => ({
     set({
       props: [...props, res.data.prop],
       createForm: {
-        title: "",
-        body: "",
+        item: "",
+        dollarVal: "",
+        dateAquired: "",
       },
     });
   },
@@ -77,11 +80,12 @@ const propsStore = create((set) => ({
     });
   },
 
-  toggleUpdate: ({ _id, title, body }) => {
+  toggleUpdate: ({ _id, item, dollarVal, dateAquired }) => {
     set({
       updateForm: {
-        title,
-        body,
+        item,
+        dollarVal,
+        dateAquired,
         _id,
       },
     });
@@ -91,14 +95,15 @@ const propsStore = create((set) => ({
     e.preventDefault();
 
     const {
-      updateForm: { title, body, _id },
+      updateForm: { item, dollarVal, dateAquired, _id },
       props,
     } = propsStore.getState();
 
     // Send the update request
     const res = await axios.put(`/props/${_id}`, {
-      title,
-      body,
+      item,
+      dollarVal,
+      dateAquired,
     });
 
     // Update state
@@ -112,8 +117,9 @@ const propsStore = create((set) => ({
       props: newProps,
       updateForm: {
         _id: null,
-        title: "",
-        body: "",
+        item: "",
+        dollarVal: "",
+        dateAquired: "",
       },
     });
   },

@@ -31,6 +31,7 @@ app.post('/signup', usersController.signup);
 app.post('/login', usersController.login);
 app.get('/logout', usersController.logout);
 app.get('/check-auth', requireAuth, usersController.checkAuth);
+app.get('/user', requireAuth, usersController.fetchUser);
 app.get("/props", requireAuth, propsController.fetchProps);
 app.get("/props/:id", requireAuth, propsController.fetchProp);
 app.post("/props", requireAuth, propsController.createProp);
@@ -41,12 +42,3 @@ app.delete("/props/:id", requireAuth, propsController.deleteProp);
 app.listen(process.env.PORT); 
 console.log(`Server listening on port ${process.env.PORT}`);
 
-// Accessing the path module
-const path = require("path");
-
-// Step 1:
-app.use(express.static(path.resolve(__dirname, "./client/build")));
-// Step 2:
-app.get("*", function (request, response) {
-  response.sendFile(path.resolve(__dirname, "./client/build", "index.html"));
-});

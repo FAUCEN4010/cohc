@@ -2,16 +2,30 @@ const bcrypt = require('bcryptjs');
 const jwt = require('jsonwebtoken');
 const User = require("../models/user");
 
+const fetchUser = async (req, res) => {
+    try {
+        // Find the user
+        const user = await User.findById(req.user._id);
+
+        // Respond with them
+        res.json({ user });
+
+    } catch (error) {
+        console.log(error);
+        res.status(500).json({ error: "Something went wrong" });
+    }
+};
+
 async function signup(req, res) {
     try {
         //get email and password from request body
-        const { email, password } = req.body;
+        const { fname, lname, dob, email, password } = req.body;
 
         // hash password
         const hashedPassword = bcrypt.hashSync(password, 8);
 
         // create a new user
-        await User.create({ email, password: hashedPassword });
+        await User.create({ fname, lname, dob, email, password: hashedPassword });
 
         // send back a response
         res.sendStatus(200);
@@ -73,6 +87,7 @@ function checkAuth(req, res) {
 }
 
 module.exports = {
+    fetchUser,
     signup,
     login,
     logout,

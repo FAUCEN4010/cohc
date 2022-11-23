@@ -1,8 +1,9 @@
 const mongoose = require("mongoose");
 
 const propSchema = new mongoose.Schema({
-  title: String,
-  body: String,
+  item: String,
+  dollarVal: String,
+  dateAquired: Date,
   user: {
     type: mongoose.Schema.Types.ObjectId,
     ref: "User",
