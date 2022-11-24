@@ -1,4 +1,5 @@
 import propsStore from "../stores/propsStore";
+import { Input } from "semantic-ui-react";
 
 export default function UpdateForm() {
   const store = propsStore();
@@ -11,14 +12,14 @@ export default function UpdateForm() {
 <div>
 
 <form onSubmit={store.updateProp}>
-<br /><br />
+<br />
   <h3 className="text-center">Update Property Record</h3>
   <br />
 
 
   <div className="form-outline mb-4 text-center" >
   <label className="form-label" htmlFor="item">Item: &nbsp;</label>
-  <input
+  <Input
           onChange={store.handleUpdateFieldChange}
           value={store.updateForm.item}
           name="item"
@@ -29,7 +30,7 @@ export default function UpdateForm() {
 
   <div className="form-outline mb-4 text-center">
   <label className="form-label" htmlFor="value">Value: &nbsp;</label>
-  <input
+  <Input
           onChange={store.handleUpdateFieldChange}
           value={store.updateForm.dollarVal}
           name="dollarVal"
@@ -40,7 +41,7 @@ export default function UpdateForm() {
 
   <div className="form-outline mb-4 text-center">
   <label className="form-label" htmlFor="dateAquired">Date Aquired: &nbsp;</label>
-  <input
+  <Input
           onChange={store.handleUpdateFieldChange}
           // value={store.updateForm.dateAquired}
           value={new Date(store.updateForm.dateAquired).toLocaleDateString('fr-CA')}

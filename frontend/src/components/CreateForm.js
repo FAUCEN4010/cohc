@@ -1,4 +1,5 @@
 import propsStore from "../stores/propsStore";
+import {Input} from 'semantic-ui-react'
 
 export default function CreateForm() {
   const store = propsStore();
@@ -10,14 +11,14 @@ export default function CreateForm() {
 <div>
 
 <form onSubmit={store.createProp}>
-<br /><br />
+<br />
   <h3 className="text-center">Add New Property</h3>
   <br />
 
 
   <div className="form-outline mb-4 text-center" >
   <label className="form-label" htmlFor="item">Item: &nbsp;</label>
-  <input
+  <Input
           onChange={store.updateCreateFormField}
           value={store.createForm.item}
           name="item"
@@ -29,7 +30,7 @@ export default function CreateForm() {
 
   <div className="form-outline mb-4 text-center">
   <label className="form-label" htmlFor="value">Value: &nbsp;</label>
-  <input
+  <Input
           onChange={store.updateCreateFormField}
           value={store.createForm.dollarVal}
           name="dollarVal"
@@ -40,7 +41,7 @@ export default function CreateForm() {
 
   <div className="form-outline mb-4 text-center">
   <label className="form-label" htmlFor="dateAquired">Date Aquired: &nbsp;</label>
-  <input
+  <Input
           onChange={store.updateCreateFormField}
           value={store.createForm.dateAquired}
           name="dateAquired"

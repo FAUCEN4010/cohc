@@ -1,9 +1,7 @@
 import React from 'react'
 import { useNavigate } from 'react-router-dom'
 import authStore from '../stores/authStore';
-import Container from 'react-bootstrap/Container';
-import Row from 'react-bootstrap/Row';
-import Col from 'react-bootstrap/Col';
+import { Input } from 'semantic-ui-react'
 
 
 
@@ -21,10 +19,87 @@ export default function SignupForm() {
 
     return (
 
-    <Container fluid>
-        <Row>
-            <Col>
+        <div>
 
+        
+
+        <form onSubmit={handleSignup}>
+        <br /><br />
+        <h3 className="text-center">Sign up</h3>
+        <br />
+
+        <div className="form-outline mb-4 text-center" >
+        <label className="form-label" htmlFor="email">First Name: &nbsp;</label>
+        <Input 
+                onChange={store.updateSignupForm} 
+                value={store.signupForm.fname}
+                type="text" 
+                name="fname" 
+                id="fname"
+                required
+                />
+        </div>
+        
+        <div className="form-outline mb-4 text-center" >
+        <label className="form-label" htmlFor="email">Last Name: &nbsp;</label>
+        <Input 
+                onChange={store.updateSignupForm} 
+                value={store.signupForm.lname}
+                type="text" 
+                name="lname" 
+                id="lname"
+                required
+                />
+        </div>
+
+        <div className="form-outline mb-4 text-center" >
+        <label className="form-label" htmlFor="email">Date of Birth: &nbsp;</label>
+        <Input 
+                onChange={store.updateSignupForm} 
+                value={store.signupForm.dob}
+                type="date" 
+                name="dob" 
+                id="dob"
+                required
+                />
+        </div>
+
+        <div className="form-outline mb-4 text-center" >
+        <label className="form-label" htmlFor="email">Email: &nbsp;</label>
+        <Input 
+                    onChange={store.updateSignupForm} 
+                    value={store.signupForm.email}
+                    type="text" 
+                    name="email" 
+                    id="email"
+                    required
+                    />
+        </div>
+
+
+        <div className="form-outline mb-4 text-center">
+        <label className="form-label" htmlFor="password">Password: &nbsp;</label>
+        <Input 
+                    onChange={store.updateSignupForm} 
+                    value={store.signupForm.password}
+                    type="password" 
+                    name="password" 
+                    id="password" 
+                    required
+                    />
+        </div>
+
+        <div className="text-center">
+        <button type="submit" className="btn btn-primary btn-block mb-4 text-center">Sign up</button>
+        </div>
+
+
+        <div className="text-center">
+        <p>Already a member? <a href="/login">Log in</a></p>
+        </div>
+    </form>
+    
+{/* 
                 <form onSubmit={handleSignup}>
                     <div>
                         <label htmlFor="email">First Name</label>
@@ -70,11 +145,8 @@ export default function SignupForm() {
                         id="password" />
                     </div>
                     <button type="submit">Sign up</button>
-                </form>
-
-            </Col>
-        </Row>
-    </Container>
+                </form> */}
+            </div>
 
 
     )

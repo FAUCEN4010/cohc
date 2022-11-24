@@ -12,18 +12,70 @@ import {Input} from 'semantic-ui-react'
 
 export default function Props() {
   const store = propsStore();
-  console.log(store.props);
+  console.log("store.props = " + store.props);
 
-  const [searchTerm, setSearchTerm] = useState("");
+  // start new stuff
+    const [APIData, setAPIData] = useState([])
+    const [searchInput, setSearchInput] = useState('');
+    const [filteredResults, setFilteredResults] = useState([]);
+
+    useEffect(() => {
+        axios.get(`/props`)
+            .then((response) => {
+                setAPIData(response.data);
+                console.log("APIData:" + response.data);
+            })
+    }, [])
+
+
+
+    const searchItems = (searchValue) => {
+        setSearchInput(searchValue)
+        if (searchInput !== '') {
+        const filteredData = APIData.filter((item) => {
+            return Object.values(item).join('').toLowerCase().includes(searchInput.toLowerCase())
+        })
+            setFilteredResults(filteredData)
+        } else {
+            setFilteredResults(APIData)
+        }
+    }
+ 
 
   return (
 
     <div style={{ padding: 20 }}>
-      
+
+        <div align="right">
+        <Input icon='search' 
+            placeholder='Search...' 
+            onChange="{(e) => searchItems(e.target.value)}"
+        />
+        </div>
+        
+            {searchInput.length < 1
+            ? (
+                filteredResults.map((props) => {
+                    return (
+                        {props}
+                    )
+                })
+            ) 
+            : (
+                APIData.map((prop) => {
+                    return (
+                        {prop}
+                    )
+                })
+            )}
 
 
-      
-      
+
+    
+
+
+
+
     <Container fluid>
         <Row>
           <Col>
@@ -32,7 +84,7 @@ export default function Props() {
           </Col>
 
           <Col align="right">
-
+            &nbsp;<br />
             <h6>Logged in as: 
               {store.user ? (
                 <span>&nbsp;{store.user.fname} {store.user.lname} &nbsp;</span>
@@ -40,15 +92,6 @@ export default function Props() {
                 <span>Guest</span>
               )}
                 <Button variant="success" size="sm" href="/logout">Log Out</Button>&nbsp;</h6>
-                <br />
-                <Input icon='search' 
-                  placeholder='Search Property...' 
-                  onChange={(e) => setSearchTerm(e.target.value)}
-                  onBlur={(e) => setSearchTerm("")}
-                />
-
-
-          
           </Col>
 
         </Row>
@@ -86,22 +129,11 @@ export default function Props() {
         </Row>
       <Row>
         <Col>
-        
-        {store.props &&
-    
-    store.props.filter((prop) => {
-      if (searchTerm == "") {
-        console.log("empty");
-        return prop;
-      } else if (prop.item.toLowerCase().includes(searchTerm.toLowerCase())) {
-        console.log("search term");
-        return prop;
-      }
-    }).map((prop) => (
-      console.log("map"),
-      <Prop prop={prop} key={prop._id} />
-    ))}
-
+        {/* {content} */}
+          {store.props &&
+              store.props.map((prop) => {
+                return <Prop prop={prop} key={prop._id} />;
+              })}
         </Col>
       </Row>
       <Row>

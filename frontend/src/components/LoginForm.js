@@ -1,6 +1,7 @@
 import React from 'react'
 import { useNavigate } from 'react-router-dom'
 import authStore from '../stores/authStore';
+import {Input} from 'semantic-ui-react'
 
 
 export default function LoginForm() {
@@ -24,12 +25,13 @@ export default function LoginForm() {
 
     <form onSubmit={handleLogin}>
     <br /><br />
-      <h5 className="text-center">Log in</h5>
+      <h3 className="text-center">Log in</h3>
       <br />
 
 
       <div className="form-outline mb-4 text-center" >
-      <label className="form-label" htmlFor="email">Email: &nbsp;</label><input 
+      <label className="form-label" htmlFor="email">Email: &nbsp;</label>
+      <Input 
                 onChange={store.updateLoginForm} 
                 value={store.loginForm.email}
                 type="email" 
@@ -40,7 +42,7 @@ export default function LoginForm() {
 
       <div className="form-outline mb-4 text-center">
       <label className="form-label" htmlFor="password">Password: &nbsp;</label>
-      <input 
+      <Input 
                 onChange={store.updateLoginForm} 
                 value={store.loginForm.password}
                 type="password" 
@@ -50,7 +52,7 @@ export default function LoginForm() {
 
       <div className="text-center">
         <button type="submit" className="btn btn-primary btn-block mb-4 text-center">Log in</button>
-        </div>
+      </div>
 
 
       <div className="text-center">
