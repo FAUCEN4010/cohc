@@ -21,10 +21,9 @@ export default function Prop({ prop }) {
         <Col xs={4}>
           <div>{new Date(prop.dateAquired).toLocaleDateString('en-us', {year: 'numeric', month: 'short', day: 'numeric'})}</div>
         </Col>
-        <Col xs={1} className="text-right">
+        <Col xs={2} className="text-right">
         <Button variant="outline-primary"size="sm" onClick={() => store.toggleUpdate(prop)}>Update</Button>
-        </Col>
-        <Col xs={1}>
+        &nbsp;&nbsp;
         <Button variant="outline-danger" size="sm" onClick={() => store.deleteProp(prop._id)}>Delete</Button>
         </Col>
       </Row>

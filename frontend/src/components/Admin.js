@@ -1,27 +1,24 @@
-import propsStore from "../stores/propsStore";
-import Prop from "./Prop";
+import React from 'react'
+import adminStore from '../stores/adminStore'
+import { useState, useEffect } from "react";
+import {Input} from 'semantic-ui-react'
+import User from './User'
 import Container from 'react-bootstrap/Container';
 import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
 import Button from 'react-bootstrap/Button';
-import { useState } from "react";
-import {Input} from 'semantic-ui-react'
 
-
-export default function Props() {
-  const store = propsStore();
-  console.log(store.props);
-
-  const [searchTerm, setSearchTerm] = useState("");
+export default function Admin () {
+    const store = adminStore();
+    const [searchTerm, setSearchTerm] = useState("");
+    console.log(store.users);
 
   return (
-
     <div style={{ padding: 20 }}>
     <Container fluid>
         <Row>
           <Col>
-          
-            <h2>My Property</h2>
+            <h2>Administration Page</h2>
           </Col>
 
           <Col align="right">
@@ -34,8 +31,9 @@ export default function Props() {
               )}
                 <Button variant="success" size="sm" href="/logout">Log Out</Button>&nbsp;</h6>
                 <br />
+
                 <Input icon='search' 
-                  placeholder='Search Property...' 
+                  placeholder='Search Users...' 
                   onChange={(e) => setSearchTerm(e.target.value)}
                   onBlur={(e) => setSearchTerm("")}
                 />
@@ -73,22 +71,22 @@ export default function Props() {
         </Row>
       <Row>
         <Col>
-        
-        {store.props &&
+
+
+{store.users &&
     
-    store.props.filter((prop) => {
+    store.users.filter((user) => {
       if (searchTerm == "") {
         console.log("empty");
-        return prop;
-      } else if (prop.item.toLowerCase().includes(searchTerm.toLowerCase())) {
+        return user;
+      } else if (user.item.toLowerCase().includes(searchTerm.toLowerCase())) {
         console.log("search term");
-        return prop;
+        return user;
       }
-    }).map((prop) => (
+    }).map((user) => (
       console.log("map"),
-      <Prop prop={prop} key={prop._id} />
+      <User user={user} key={user._id} />
     ))}
-
         </Col>
       </Row>
       <Row>

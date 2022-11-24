@@ -6,7 +6,7 @@ import propsStore from "../stores/propsStore";
 import '../index.css';
 
 
-export default function PropsPage() {
+export default function UserPage() {
     const store = propsStore();
 
     // Use effect
@@ -16,7 +16,7 @@ export default function PropsPage() {
 
     // Use effect
     useEffect(() => {
-    store.fetchProps();
+        store.fetchProps();
     }, []);
 
     

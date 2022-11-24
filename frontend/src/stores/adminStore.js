@@ -1,23 +1,10 @@
 import create from "zustand";
 import axios from "axios";
 
-const authStore = create((set) => ({
-    //user: null,
+const adminStore = create((set) => ({
+    //users: null,
 
     loggedIn: null,
-
-    loginForm: {
-        email: "",
-        password: "",
-    },
-
-    signupForm: {
-        fname: "",
-        lname: "",
-        dob: "",
-        email: "",
-        password: "",
-    },
 
     fetchUser: async () => {
         // Fetch the user
@@ -33,6 +20,16 @@ const authStore = create((set) => ({
             email: res.data.user.email,
             role: res.data.user.role,
         }});
+    },
+
+    fetchAllUsers: async () => {
+        // Fetch the user
+        const res = await axios.get("/allUsers");
+        // console.log(res.data.users);
+    
+        // Set to state
+        set({ users: res.data.users });
+
     },
 
     updateLoginForm: (e) => {
@@ -62,7 +59,7 @@ const authStore = create((set) => ({
     },
 
     login: async (e) => {
-        const {loginForm} = authStore.getState();
+        const {loginForm} = adminStore.getState();
 
         const res = await axios.post("/login", loginForm);
 
@@ -87,7 +84,7 @@ const authStore = create((set) => ({
     },
 
     signup: async (e) => {
-        const {signupForm} = authStore.getState();
+        const {signupForm} = adminStore.getState();
 
         await axios.post("/signup", signupForm);
 
@@ -110,4 +107,4 @@ const authStore = create((set) => ({
 }));
 
 
-export default authStore;
+export default adminStore;

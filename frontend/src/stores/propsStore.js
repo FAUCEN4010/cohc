@@ -29,6 +29,7 @@ const propsStore = create((set) => ({
         lname: res.data.user.lname,
         dob: res.data.user.dob,
         email: res.data.user.email,
+        role: res.data.user.role,
     }});
   },
   

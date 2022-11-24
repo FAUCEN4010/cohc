@@ -10,6 +10,7 @@ const cookieParser = require("cookie-parser");
 const connectToDb = require("./config/connectToDb");
 const propsController = require("./controllers/propsController");
 const usersController = require("./controllers/usersController");
+const adminController = require("./controllers/adminController");
 const requireAuth = require("./middleware/requireAuth");
 
 // Create an express app
@@ -32,6 +33,8 @@ app.post('/login', usersController.login);
 app.get('/logout', usersController.logout);
 app.get('/check-auth', requireAuth, usersController.checkAuth);
 app.get('/user', requireAuth, usersController.fetchUser);
+app.get('/allUsers', requireAuth, adminController.fetchAllUsers);
+app.get('/admin', requireAuth, usersController.fetchUser);
 app.get("/props", requireAuth, propsController.fetchProps);
 app.get("/props/:id", requireAuth, propsController.fetchProp);
 app.post("/props", requireAuth, propsController.createProp);
