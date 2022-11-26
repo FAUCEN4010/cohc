@@ -6,12 +6,17 @@ import Col from 'react-bootstrap/Col';
 import Button from 'react-bootstrap/Button';
 import { useState } from "react";
 import {Input} from 'semantic-ui-react'
+import {CSVLink} from 'react-csv';
+import ReactToPrint from 'react-to-print';
 
 
 export default function Props() {
   const store = propsStore();
-  console.log(store.props);
 
+  // for CSV download
+  const csvData = store.props
+
+  // useState for search
   const [searchTerm, setSearchTerm] = useState("");
 
   return (
@@ -61,7 +66,7 @@ export default function Props() {
         <h4>Date Aquired</h4>
         </Col>
         <Col xs={2}>
-        <h4 className="text-center">Actions</h4>
+        <h4 className="text-center">Actions</h4>:&nbsp;
         </Col>
       </Row>
         <Row>
@@ -78,19 +83,31 @@ export default function Props() {
     
     store.props.filter((prop) => {
       if (searchTerm == "") {
-        console.log("empty");
+        console.log("search empty");
         return prop;
       } else if (prop.item.toLowerCase().includes(searchTerm.toLowerCase())) {
         console.log("search term");
         return prop;
       }
     }).map((prop) => (
-      console.log("map"),
       <Prop prop={prop} key={prop._id} />
     ))}
 
         </Col>
       </Row>
+
+      <Row>
+        <Col>
+          <div align="center">
+            <br />
+            {store.props &&
+            <CSVLink className="btn btn-success" role="button" data={csvData}>Download CSV</CSVLink>
+            }
+        &nbsp;&nbsp;
+          </div>
+        </Col>
+        </Row>
+
       <Row>
         <Col>
               &nbsp;
