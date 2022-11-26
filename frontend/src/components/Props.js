@@ -4,14 +4,20 @@ import Container from 'react-bootstrap/Container';
 import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
 import Button from 'react-bootstrap/Button';
-import { useState } from "react";
-import {Input} from 'semantic-ui-react'
+import { useState, useRef } from "react";
+import {Input, button} from 'semantic-ui-react'
 import {CSVLink} from 'react-csv';
-import ReactToPrint from 'react-to-print';
+import {useReactToPrint} from 'react-to-print';
 
 
 export default function Props() {
   const store = propsStore();
+
+  // for printing the
+  const componentRef = useRef();
+  const handlePrint = useReactToPrint({
+    content: () => componentRef.current,
+  });
 
   // for CSV download
   const csvData = store.props
@@ -21,7 +27,7 @@ export default function Props() {
 
   return (
 
-    <div style={{ padding: 20 }}>
+    <div style={{ padding: 20 }} ref={componentRef}>
     <Container fluid>
         <Row>
           <Col>
@@ -39,14 +45,24 @@ export default function Props() {
               )}
                 <Button variant="success" size="sm" href="/logout">Log Out</Button>&nbsp;</h6>
                 <br />
-                <Input icon='search' 
+      
+                
+          </Col>
+        </Row>
+        <Row>
+          <Col>
+          <Input icon='search' 
                   placeholder='Search Property...' 
                   onChange={(e) => setSearchTerm(e.target.value)}
                   onBlur={(e) => setSearchTerm("")}
                 />
           </Col>
+          <Col align="right">
+                <button className="ui labeled icon button tiny"><i className="download icon"></i><CSVLink data={csvData}>Download</CSVLink></button>
+                <button onClick={handlePrint} className="ui labeled icon button tiny"><i className="print icon"></i>Print</button>
+            </Col>
         </Row>
-
+        
         <Row>
           <Col>
             <div align="center">
@@ -66,7 +82,7 @@ export default function Props() {
         <h4>Date Aquired</h4>
         </Col>
         <Col xs={2}>
-        <h4 className="text-center">Actions</h4>:&nbsp;
+        <h4 className="text-center">Actions</h4>
         </Col>
       </Row>
         <Row>
@@ -82,7 +98,7 @@ export default function Props() {
         {store.props &&
     
     store.props.filter((prop) => {
-      if (searchTerm == "") {
+      if (searchTerm === "") {
         console.log("search empty");
         return prop;
       } else if (prop.item.toLowerCase().includes(searchTerm.toLowerCase())) {
@@ -95,18 +111,6 @@ export default function Props() {
 
         </Col>
       </Row>
-
-      <Row>
-        <Col>
-          <div align="center">
-            <br />
-            {store.props &&
-            <CSVLink className="btn btn-success" role="button" data={csvData}>Download CSV</CSVLink>
-            }
-        &nbsp;&nbsp;
-          </div>
-        </Col>
-        </Row>
 
       <Row>
         <Col>

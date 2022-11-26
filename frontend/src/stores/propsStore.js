@@ -72,7 +72,7 @@ const propsStore = create((set) => ({
 
   deleteProp: async (_id) => {
     // Delete the prop
-    const res = await axios.delete(`/props/${_id}`);
+    await axios.delete(`/props/${_id}`);
     const { props } = propsStore.getState();
 
     // Update state
