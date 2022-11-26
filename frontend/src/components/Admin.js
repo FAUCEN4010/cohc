@@ -1,6 +1,6 @@
 import React from 'react'
 import adminStore from '../stores/adminStore'
-import { useState, useEffect } from "react";
+import { useState } from "react";
 import {Input} from 'semantic-ui-react'
 import User from './User'
 import Container from 'react-bootstrap/Container';
@@ -32,13 +32,19 @@ export default function Admin () {
                 <Button variant="success" size="sm" href="/logout">Log Out</Button>&nbsp;</h6>
                 <br />
 
-                <Input icon='search' 
+
+          </Col>
+        </Row>
+        <Row>
+          <Col>
+          <Input icon='search' 
                   placeholder='Search Users...' 
                   onChange={(e) => setSearchTerm(e.target.value)}
                   onBlur={(e) => setSearchTerm("")}
                 />
           </Col>
         </Row>
+
 
         <Row>
           <Col>

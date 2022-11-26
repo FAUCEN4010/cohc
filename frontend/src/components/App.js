@@ -8,6 +8,7 @@ import Navbar from 'react-bootstrap/Navbar';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faFaceSmile } from '@fortawesome/free-solid-svg-icons'
 import Container from 'react-bootstrap/Container';
+import Header from "../components/Header";
 
 
 function App() {
@@ -16,19 +17,8 @@ function App() {
     
 
         <div className="App">
-          <BrowserRouter>
-          <Navbar bg="dark" variant="dark" expand="lg">
-          <Container>
-          <Navbar.Brand href="/" ><FontAwesomeIcon icon={faFaceSmile} /> &nbsp; City of Happy Citizens</Navbar.Brand>
-            <Navbar.Toggle />
-            <Navbar.Collapse className="justify-content-end">
-              <Navbar.Text>
-                Property Management System
-              </Navbar.Text>
-            </Navbar.Collapse>
-          </Container>
-        </Navbar>
-
+        <BrowserRouter>
+        <Header />
         <Routes>
           <Route index element={<RequireAuth><MainPage /></RequireAuth>} />
           <Route path="/login" element={<LoginPage />} />

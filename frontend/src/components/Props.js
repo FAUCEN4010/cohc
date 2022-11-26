@@ -5,7 +5,7 @@ import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
 import Button from 'react-bootstrap/Button';
 import { useState, useRef } from "react";
-import {Input, button} from 'semantic-ui-react'
+import {Input} from 'semantic-ui-react'
 import {CSVLink} from 'react-csv';
 import {useReactToPrint} from 'react-to-print';
 
@@ -58,8 +58,14 @@ export default function Props() {
                 />
           </Col>
           <Col align="right">
-                <button className="ui labeled icon button tiny"><i className="download icon"></i><CSVLink data={csvData}>Download</CSVLink></button>
+          
+                <button className="ui labeled icon button tiny"><i className="download icon"></i>
+                {store.props &&
+                  <CSVLink data={csvData}>Download</CSVLink>
+                }
+                  </button>
                 <button onClick={handlePrint} className="ui labeled icon button tiny"><i className="print icon"></i>Print</button>
+
             </Col>
         </Row>
         

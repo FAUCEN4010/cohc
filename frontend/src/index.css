@@ -1,4 +1,26 @@
-.main-container {
-    margin: auto;
+.main-header {
+    width: 100%;
+    background-color: #636363;
+}
+
+.header {
+    padding: 15px;
+    font-size: 20px;
+    color: #bbbbbb;
     width: 1000px;
+    margin: auto;
+
+}
+
+.main-container {
+    width: 1000px;
+    margin: auto;
+    padding: 10px;
+    background-color: #ffffff;
+    height: 100%;
+    color: #555555;
+}
+
+body {
+    background-color: #000000;
 }
