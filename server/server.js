@@ -24,7 +24,7 @@ app.use(express.json( { limit: "50mb" } ));
 app.use(express.urlencoded({ extended: true }));
 app.use(cookieParser());
 app.use(cors({
-  origin: true,
+  origin: 'http://faucen4010.onrender.com',
   credentials: true, 
 }));
 
