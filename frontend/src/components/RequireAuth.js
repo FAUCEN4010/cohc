@@ -13,7 +13,7 @@ export default function RequireAuth(props) {
     }, []);
 
     if (store.loggedIn === null) {
-        return <h1>Loading...</h1>;
+        return <h1 align="center">Loading...</h1>;
     }
 
     if (store.loggedIn === false) {
