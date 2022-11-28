@@ -1,6 +1,6 @@
 {
   "name": "frontend",
-  "homepage": "https://FAUCEN4010.github.io",
+  "homepage": "https://cohc.render.com",
   "version": "0.1.0",
   "private": true,
   "dependencies": {
@@ -56,6 +56,6 @@
       "last 1 firefox version",
       "last 1 safari version"
     ]
-  },
+  }
   
 }
