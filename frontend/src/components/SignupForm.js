@@ -14,7 +14,7 @@ export default function SignupForm() {
     const handleSignup = async (e) => {
         e.preventDefault();
         await store.signup();
-        navigate("/login");
+        navigate("/");
     }
 
     return (
