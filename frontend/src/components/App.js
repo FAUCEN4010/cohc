@@ -16,8 +16,8 @@ function App() {
         <BrowserRouter>
         <Header />
         <Routes>
-          <Route index element={<RequireAuth><MainPage /></RequireAuth>} />
-          <Route path="/login" element={<LoginPage />} />
+          <Route path="/props" element={<RequireAuth><MainPage /></RequireAuth>} />
+          <Route index path="/login" element={<LoginPage />} />
           <Route path="/signup" element={<SignupPage />} />
           <Route path="/logout" element={<LogoutPage />} />
           <Route path="*" element={<h1>404</h1>} />

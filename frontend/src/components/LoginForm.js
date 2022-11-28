@@ -14,7 +14,7 @@ export default function LoginForm() {
         await store.login();
 
         // Navigate
-        navigate('/');
+        navigate('/props');
     }
 
     return (

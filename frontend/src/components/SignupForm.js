@@ -100,53 +100,7 @@ export default function SignupForm() {
         </div>
     </form>
     
-{/* 
-                <form onSubmit={handleSignup}>
-                    <div>
-                        <label htmlFor="email">First Name</label>
-                        <input 
-                            onChange={store.updateSignupForm} 
-                            value={store.signupForm.fname}
-                            type="fname" 
-                            name="fname" 
-                            id="fname" />
-                        <label htmlFor="email">Last Name</label>
-                        <input 
-                            onChange={store.updateSignupForm} 
-                            value={store.signupForm.lname}
-                            type="text" 
-                            name="lname" 
-                            id="lname" />
-                    </div>
-                    <div>
-                    <label htmlFor="email">Date of Birth</label>
-                    <input 
-                        onChange={store.updateSignupForm} 
-                        value={store.signupForm.dob}
-                        type="date" 
-                        name="dob" 
-                        id="dob" />
-                    </div>
-                    <div>
-                    <label htmlFor="email">Email</label>
-                    <input 
-                        onChange={store.updateSignupForm} 
-                        value={store.signupForm.email}
-                        type="text" 
-                        name="email" 
-                        id="email" />
-                    </div>
-                    <div>
-                    <label htmlFor="password">Password</label>
-                    <input 
-                        onChange={store.updateSignupForm} 
-                        value={store.signupForm.password}
-                        type="password" 
-                        name="password" 
-                        id="password" />
-                    </div>
-                    <button type="submit">Sign up</button>
-                </form> */}
+
             </div>
 
 

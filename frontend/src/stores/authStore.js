@@ -21,7 +21,7 @@ const authStore = create((set) => ({
 
     fetchUser: async () => {
         // Fetch the user
-        const res = await axios.get("/user/");
+        const res = await axios.get("/user");
     
         // Set to state
         // set({ user: res.data.user });        
@@ -64,7 +64,7 @@ const authStore = create((set) => ({
     login: async (e) => {
         const {loginForm} = authStore.getState();
 
-        const res = await axios.post("/login/", loginForm);
+        const res = await axios.post("/login", loginForm);
 
         set({
             loggedIn: true,
@@ -79,7 +79,7 @@ const authStore = create((set) => ({
 
     checkAuth: async () => {
         try {
-            await axios.get("/check-auth/");
+            await axios.get("/check-auth");
             set({loggedIn: true});
         } catch (err) {
             set({loggedIn: false});
@@ -89,7 +89,7 @@ const authStore = create((set) => ({
     signup: async (e) => {
         const {signupForm} = authStore.getState();
 
-        await axios.post("/signup/", signupForm);
+        await axios.post("/signup", signupForm);
 
         set({
             signupForm: {
@@ -103,7 +103,7 @@ const authStore = create((set) => ({
     },
 
     logout: async () => {
-        await axios.get("/logout/");
+        await axios.get("/logout");
         set({loggedIn: false});
     }
 
