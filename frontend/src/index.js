@@ -11,7 +11,7 @@ if (process.env.NODE_ENV === 'production') {
 }
 
 //axios.defaults.baseURL = "http://localhost:3009";
-axios.defaults.baseURL = "http://cohc.onrender.com";
+axios.defaults.baseURL = "http://cohc-server.onrender.com";
 axios.defaults.withCredentials = true;
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
