@@ -82,6 +82,7 @@ const authStore = create((set) => ({
             console.log("User is logged in");
         } catch (err) {
             set({loggedIn: false});
+            console.log("User is not logged in");
         }
     },
 
