@@ -1,6 +1,5 @@
 import propsStore from "../stores/propsStore";
 import {Input} from 'semantic-ui-react'
-import { useState } from "react";
 
 
 export default function CreateForm() {
@@ -27,8 +26,6 @@ export default function CreateForm() {
     })
 
   }
-
-  const [file, setFile] = useState("");
 
   if (store.updateForm._id) return <></>;
 
@@ -85,7 +82,7 @@ export default function CreateForm() {
                 type="file"
                 name="uploadFile"
                 onChange={handleFileRead}
-                {...(file ? ( {value: file} ) : {value: setFile})}
+                
                 
               />
               
