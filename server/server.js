@@ -24,7 +24,8 @@ app.use(express.json( { limit: "50mb" } ));
 app.use(express.urlencoded({ extended: true }));
 app.use(cookieParser());
 app.use(cors({
-  origin: ['https://cohc.onrender.com', 'https://cohc-server.onrender.com'],
+  origin: ['https://cohc.onrender.com', 'https://cohc-server.onrender.com',
+  'http://cohc.onrender.com', 'http://cohc-server.onrender.com'],
   credentials: true, 
 }));
 
