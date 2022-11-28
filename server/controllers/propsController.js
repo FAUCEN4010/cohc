@@ -34,21 +34,23 @@ const fetchProp = async (req, res) => {
 const createProp = async (req, res) => {
   try {
   // Get the sent in data off request body
-  const { item, dollarVal, dateAquired } = req.body;
-
+  const { item, dollarVal, dateAquired, uploadFile } = req.body;
+  
   // Create a prop with it
   const prop = await Prop.create({
     item,
     dollarVal,
     dateAquired,
+    uploadFile,
     user: req.user._id,
   });
+  console.log(prop);
 
   // respond with the new prop
   res.json({ prop });
   } catch (error) {
     console.log(error);
-    res.status(500).json({ error: "Something went wrong" });
+    res.status(500).json({ prop });
   }
 };
 
@@ -58,8 +60,8 @@ const updateProp = async (req, res) => {
   const propId = req.params.id;
 
   // Get the data off the req body
-  const { item, dollarVal, dateAquired } = req.body;
-
+  const { item, dollarVal, dateAquired, uploadFile } = req.body;
+  
   // Find and update the record
   await Prop.findOneAndUpdate(
     { 
@@ -69,6 +71,7 @@ const updateProp = async (req, res) => {
     item,
     dollarVal,
     dateAquired,
+    uploadFile,
     }
   );
 
@@ -89,7 +92,7 @@ const deleteProp = async (req, res) => {
   const propId = req.params.id;
 
   // Delete the record
-  await Prop.deleteOne({ id: propId, user: req.user._id});
+  await Prop.deleteOne({ _id: propId, user: req.user._id});
 
   // Respond
   res.json({ success: "Record deleted" });

@@ -4,10 +4,6 @@ import LogoutPage from "../pages/LogoutPage";
 import SignupPage from "../pages/SignupPage";
 import RequireAuth from "../components/RequireAuth";
 import {BrowserRouter, Routes, Route} from "react-router-dom";
-import Navbar from 'react-bootstrap/Navbar';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faFaceSmile } from '@fortawesome/free-solid-svg-icons'
-import Container from 'react-bootstrap/Container';
 import Header from "../components/Header";
 
 

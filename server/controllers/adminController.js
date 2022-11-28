@@ -30,6 +30,56 @@ const fetchAllUsers = async (req, res) => {
     }
 };
 
+const updateUser = async (req, res) => {
+    try {
+    // Get the id off the url
+    const userId = req.params.id;
+  
+    // Get the data off the req body
+    const { fname, lname, dob, email } = req.body;
+  
+    // Find and update the record
+    await User.findOneAndUpdate(
+      { 
+      _id: userId, 
+      user: req.user._id
+      }, {
+        fname,
+        lname,
+        dob,
+        email,
+      }
+    );
+  
+    // Find updated prop
+    const user = await User.findById(userId);
+  
+    // Respond with it
+    res.json({ user });
+    } catch (error) {
+      console.log(error);
+      res.status(500).json({ error: "Something went wrong" });
+    }
+  };
+
+const deleteUser = async (req, res) => {
+    try {
+    // get id off url
+    const userId = req.params.id;
+  
+    // Delete the record
+    await User.deleteOne({ _id: userId, user: req.user._id });
+    //console.log(userId)
+  
+    // Respond
+    res.json({ success: "User deleted" });
+    
+    } catch (error) {
+      console.log(error);
+      res.status(500).json({ error: "Something went wrong" });
+    }
+  };
+
 async function signup(req, res) {
     try {
         //get email and password from request body
@@ -103,6 +153,7 @@ function checkAuth(req, res) {
 module.exports = {
     fetchUser,
     fetchAllUsers,
+    deleteUser,
     signup,
     login,
     logout,

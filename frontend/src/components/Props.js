@@ -19,8 +19,26 @@ export default function Props() {
     content: () => componentRef.current,
   });
 
-  // for CSV download
-  const csvData = store.props
+// for CSV download
+  
+  const csvData = 
+  store.props ?
+    [
+    ['Item', 'Value', 'Date Aquired', 'File Uploaded'],  
+    ...store.props.map((prop) => [
+      prop.item,
+      prop.dollarVal,
+      new Date(prop.dateAquired).toLocaleDateString('en-us', {year: 'numeric', month: 'short', day: 'numeric'}),  
+      prop.uploadFile ? 'Yes' : 'No'
+    ])
+    ] 
+    : 
+    [];
+
+
+  
+
+
 
   // useState for search
   const [searchTerm, setSearchTerm] = useState("");
@@ -54,7 +72,7 @@ export default function Props() {
           <Input icon='search' 
                   placeholder='Search Property...' 
                   onChange={(e) => setSearchTerm(e.target.value)}
-                  onBlur={(e) => setSearchTerm("")}
+                  
                 />
           </Col>
           <Col align="right">
@@ -78,17 +96,20 @@ export default function Props() {
         </Row>
 
       <Row>
-        <Col xs={4}>
+        <Col xs={3}>
           <h4>Item</h4>
         </Col>
         <Col xs={2}>
         <h4>Value</h4>
         </Col>
-        <Col xs={4}>
+        <Col xs={2}>
         <h4>Date Aquired</h4>
         </Col>
+        <Col xs={3}>
+        <h4>Supporting Files</h4>
+        </Col>
         <Col xs={2}>
-        <h4 className="text-center">Actions</h4>
+        <h4>Actions</h4>
         </Col>
       </Row>
         <Row>
@@ -124,6 +145,7 @@ export default function Props() {
         </Col>
       </Row>
     </Container>
+
     </div>
 
   );  

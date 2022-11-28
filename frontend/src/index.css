@@ -24,3 +24,14 @@
 body {
     background-color: #000000;
 }
+
+.uploadLabel {
+    padding: 1px;
+    display: table;
+    color: #555555;
+
+     }
+
+/* input[type="file"] {
+    display: none;
+} */

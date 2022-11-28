@@ -13,15 +13,19 @@ const usersController = require("./controllers/usersController");
 const adminController = require("./controllers/adminController");
 const requireAuth = require("./middleware/requireAuth");
 
+
+
+
 // Create an express app
 const app = express();
 
 // Configure express app
-app.use(express.json());
+app.use(express.json( { limit: "50mb" } ));
+app.use(express.urlencoded({ extended: true }));
 app.use(cookieParser());
 app.use(cors({
   origin: true,
-  credentials: true,
+  credentials: true, 
 }));
 
 // Connect to database
@@ -34,14 +38,20 @@ app.get('/logout', usersController.logout);
 app.get('/check-auth', requireAuth, usersController.checkAuth);
 app.get('/user', requireAuth, usersController.fetchUser);
 app.get('/allUsers', requireAuth, adminController.fetchAllUsers);
+app.delete("/users/:id", requireAuth, adminController.deleteUser);
 app.get('/admin', requireAuth, usersController.fetchUser);
 app.get("/props", requireAuth, propsController.fetchProps);
 app.get("/props/:id", requireAuth, propsController.fetchProp);
 app.post("/props", requireAuth, propsController.createProp);
 app.put("/props/:id", requireAuth, propsController.updateProp);
 app.delete("/props/:id", requireAuth, propsController.deleteProp);
+ 
+
 
 // Start our server
-app.listen(process.env.PORT); 
-console.log(`Server listening on port ${process.env.PORT}`);
+const port = process.env.PORT || 3009;
+app.listen(port, () => {
+  console.log(`Server listening on port ${port}`);
+});  
+
 

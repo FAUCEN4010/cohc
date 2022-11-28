@@ -10,7 +10,8 @@ if (process.env.NODE_ENV === 'production') {
   disableReactDevTools();
 }
 
-axios.defaults.baseURL = "http://faucen4010.onrender.com";
+axios.defaults.baseURL = "http://localhost:3009";
+// axios.defaults.baseURL = "http://faucen4010.onrender.com";
 axios.defaults.withCredentials = true;
 
 const root = ReactDOM.createRoot(document.getElementById("root"));

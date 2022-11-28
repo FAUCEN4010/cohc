@@ -69,7 +69,7 @@ export default function SignupForm() {
         <Input 
                     onChange={store.updateSignupForm} 
                     value={store.signupForm.email}
-                    type="text" 
+                    type="email" 
                     name="email" 
                     id="email"
                     required
@@ -86,6 +86,7 @@ export default function SignupForm() {
                     name="password" 
                     id="password" 
                     required
+                    minLength="8"
                     />
         </div>
 

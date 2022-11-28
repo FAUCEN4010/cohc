@@ -16,15 +16,14 @@ export default function User({ user }) {
           <div key={user._id}>{user.fname} {user.lname}</div>
         </Col>
         
-        <Col xs={2}>
+        <Col xs={3}>
           <div>{new Date(user.dob).toLocaleDateString('en-us', {year: 'numeric', month: 'short', day: 'numeric'})}</div>
         </Col>
-        <Col xs={5}>
+        <Col xs={4}>
           <div>{user.email}</div>
         </Col>
-        <Col xs={2} className="text-right">
-        <Button variant="outline-primary"size="sm" onClick={() => store.toggleUpdate(user)}>Update</Button>
-        &nbsp;&nbsp;
+
+        <Col xs={2} align="right">
         <Button variant="outline-danger" size="sm" onClick={() => store.deleteUser(user._id)}>Delete</Button>
         </Col>
       </Row>

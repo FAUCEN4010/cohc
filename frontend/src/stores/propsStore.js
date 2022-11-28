@@ -8,6 +8,7 @@ const propsStore = create((set) => ({
     item: "",
     dollarVal: "",
     dateAquired: "",
+    uploadFile: "",
   },
 
   updateForm: {
@@ -15,6 +16,7 @@ const propsStore = create((set) => ({
     item: "",
     dollarVal: "",
     dateAquired: "",
+    uploadFile: "",
   },
 
   fetchUser: async () => {
@@ -66,8 +68,11 @@ const propsStore = create((set) => ({
         item: "",
         dollarVal: "",
         dateAquired: "",
+        uploadFile: "",
       },
     });
+    
+    ;
   },
 
   deleteProp: async (_id) => {
@@ -96,12 +101,13 @@ const propsStore = create((set) => ({
     });
   },
 
-  toggleUpdate: ({ _id, item, dollarVal, dateAquired }) => {
+  toggleUpdate: ({ _id, item, dollarVal, dateAquired, uploadFile }) => {
     set({
       updateForm: {
         item,
         dollarVal,
         dateAquired,
+        uploadFile,
         _id,
       },
     });
@@ -111,7 +117,7 @@ const propsStore = create((set) => ({
     e.preventDefault();
 
     const {
-      updateForm: { item, dollarVal, dateAquired, _id },
+      updateForm: { item, dollarVal, dateAquired, uploadFile, _id },
       props,
     } = propsStore.getState();
 
@@ -120,6 +126,7 @@ const propsStore = create((set) => ({
       item,
       dollarVal,
       dateAquired,
+      uploadFile,
     });
 
     // Update state
@@ -136,6 +143,7 @@ const propsStore = create((set) => ({
         item: "",
         dollarVal: "",
         dateAquired: "",
+        uploadFile: "",
       },
     });
   },

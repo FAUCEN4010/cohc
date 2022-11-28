@@ -51,7 +51,7 @@ export default function Admin () {
           <Input icon='search' 
                   placeholder='Search Users...' 
                   onChange={(e) => setSearchTerm(e.target.value)}
-                  onBlur={(e) => setSearchTerm("")}
+                  
                 />
           </Col>
           <Col align="right">
@@ -77,13 +77,13 @@ export default function Admin () {
         <Col xs={3}>
           <h4>User's Name</h4>
         </Col>
-        <Col xs={2}>
+        <Col xs={3}>
         <h4>Date of Birth</h4>
         </Col>
-        <Col xs={5}>
+        <Col xs={4}>
         <h4>Email Address</h4>
         </Col>
-        <Col xs={2}>
+        <Col align="right">
         <h4>Actions</h4>
         </Col>
       </Row>

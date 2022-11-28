@@ -32,47 +32,65 @@ const adminStore = create((set) => ({
 
     },
 
-    updateLoginForm: (e) => {
-        const { name, value } = e.target;
-
-        set((state) => {
-            return {
-                loginForm: {
-                    ...state.loginForm,
-                    [name]: value,
-                },
-            };
+    deleteUser: async (_id) => {
+        // Delete the user
+        await axios.delete(`/users/${_id}`);
+        const { users } = adminStore.getState();
+    
+        // Update state
+        const newUsers = users.filter((user) => {
+          return user._id !== _id;
         });
-    },
+    
+        set({ users: newUsers });
+      },
 
-    updateSignupForm: (e) => {
-        const { name, value } = e.target;
+    // toggleUpdate: ({ fname, lname, dob, email }) => {
+    //     set({
+    //       updateForm: {
+    //         fname,
+    //         lname,
+    //         dob,
+    //         email,
+    //       },
+    //     });
+    //   },
 
-        set((state) => {
-            return {
-                signupForm: {
-                    ...state.signupForm,
-                    [name]: value,
-                },
-            };
-        });
-    },
+    //   updateUser: async (e) => {
+    //     e.preventDefault();
+    
+    //     const {
+    //         updateForm: { fname, lname, dob, email, _id },
+    //         users
+    //     } = adminStore.getState();
+    
+    //     // Send the update request
+    //     const res = await axios.put(`/users/${_id}`, {
+    //         fname,
+    //         lname,
+    //         dob,
+    //         email,
+    //     });
+    
+    //     // Update state
+    //     const newUser = [...users];
+    //     const userIndex = users.findIndex((user) => {
+    //       return user._id === _id;
+    //     });
+    //     newUser[userIndex] = res.data.user;
+    
+    //     set({
+    //       users: newUser,
+    //       updateForm: {
+    //         _id: null,
+    //         fname: "",
+    //         lname: "",
+    //         dob: "",
+    //         email: "",
+    //       },
+    //     });
+    //   },
 
-    login: async (e) => {
-        const {loginForm} = adminStore.getState();
-
-        const res = await axios.post("/login", loginForm);
-
-        set({
-            loggedIn: true,
-            loginForm: {
-                email: "",
-                password: "",
-            },
-        });
-
-        console.log(res);
-    },
 
     checkAuth: async () => {
         try {
@@ -83,26 +101,6 @@ const adminStore = create((set) => ({
         }
     },
 
-    signup: async (e) => {
-        const {signupForm} = adminStore.getState();
-
-        await axios.post("/signup", signupForm);
-
-        set({
-            signupForm: {
-                fname: "",
-                lname: "",
-                dob: "",
-                email: "",
-                password: "",
-            },
-        });
-    },
-
-    logout: async () => {
-        await axios.get("/logout");
-        set({loggedIn: false});
-    }
 
 }));
 

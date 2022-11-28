@@ -1,8 +1,34 @@
 import propsStore from "../stores/propsStore";
 import {Input} from 'semantic-ui-react'
+import { useState } from "react";
+
 
 export default function CreateForm() {
   const store = propsStore();
+
+  const handleFileRead = async (event) => {
+    const file = event.target.files[0]
+    const base64 = await convertBase64(file) 
+    console.log(base64);
+  }
+
+
+  const convertBase64 = (file) => {
+    return new Promise((resolve, reject) => {
+      const fileReader = new FileReader();
+      fileReader.readAsDataURL(file)
+      fileReader.onload = () => {
+        resolve(fileReader.result);
+        store.createForm.uploadFile = fileReader.result;
+      }
+      fileReader.onerror = (error) => {
+        reject(error);
+      }
+    })
+
+  }
+
+  const [file, setFile] = useState("");
 
   if (store.updateForm._id) return <></>;
 
@@ -35,6 +61,7 @@ export default function CreateForm() {
           value={store.createForm.dollarVal}
           name="dollarVal"
           type="number"
+          min="0"
           required
         />
   </div>
@@ -48,6 +75,23 @@ export default function CreateForm() {
           type="date"
           required
         />
+  </div>
+
+  <div className="form-outline mb-4 text-center ui  mini">
+  <label className="form-Label" htmlFor="uploadFile">Supporting File: &nbsp;
+              
+                <Input
+                id="uploadFile"
+                type="file"
+                name="uploadFile"
+                onChange={handleFileRead}
+                {...(file ? ( {value: file} ) : {value: setFile})}
+                
+              />
+              
+              &nbsp;
+    <i className="ui upload icon" />
+    (Optional)</label>
   </div>
 
   <div className="text-center">

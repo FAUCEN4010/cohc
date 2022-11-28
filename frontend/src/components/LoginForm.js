@@ -47,7 +47,8 @@ export default function LoginForm() {
                 value={store.loginForm.password}
                 type="password" 
                 name="password" 
-                id="password" />
+                id="password"
+                minLength="8" />
       </div>
 
       <div className="text-center">
