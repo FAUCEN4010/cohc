@@ -96,7 +96,7 @@ export default function SignupForm() {
 
 
         <div className="text-center">
-        <p>Already a member? <a href="/login">Log in</a></p>
+        <p>Already a member? <a href="/">Log in</a></p>
         </div>
     </form>
     

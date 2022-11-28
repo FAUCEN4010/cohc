@@ -16,11 +16,15 @@ export default function User({ user }) {
           <div key={user._id}>{user.fname} {user.lname}</div>
         </Col>
         
-        <Col xs={3}>
+        <Col xs={2}>
           <div>{new Date(user.dob).toLocaleDateString('en-us', {year: 'numeric', month: 'short', day: 'numeric'})}</div>
         </Col>
         <Col xs={4}>
           <div>{user.email}</div>
+        </Col>
+
+        <Col xs={1}>
+          <div>{user.role}</div>
         </Col>
 
         <Col xs={2} align="right">

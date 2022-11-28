@@ -8,7 +8,7 @@ const adminStore = create((set) => ({
 
     fetchUser: async () => {
         // Fetch the user
-        const res = await axios.get("/user");
+        const res = await axios.get("/user", {withCredentials: true});
     
         // Set to state
         // set({ user: res.data.user });        
@@ -24,7 +24,7 @@ const adminStore = create((set) => ({
 
     fetchAllUsers: async () => {
         // Fetch the user
-        const res = await axios.get("/allUsers");
+        const res = await axios.get("/allUsers", {withCredentials: true});
         // console.log(res.data.users);
     
         // Set to state
@@ -34,7 +34,7 @@ const adminStore = create((set) => ({
 
     deleteUser: async (_id) => {
         // Delete the user
-        await axios.delete(`/users/${_id}`);
+        await axios.delete(`/users/${_id}`, {withCredentials: true});
         const { users } = adminStore.getState();
     
         // Update state
@@ -94,7 +94,7 @@ const adminStore = create((set) => ({
 
     checkAuth: async () => {
         try {
-            await axios.get("/check-auth");
+            await axios.get("/check-auth", {withCredentials: true});
             set({loggedIn: true});
         } catch (err) {
             set({loggedIn: false});

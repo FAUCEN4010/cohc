@@ -21,7 +21,7 @@ const propsStore = create((set) => ({
 
   fetchUser: async () => {
     // Fetch the user
-    const res = await axios.get("/user");
+    const res = await axios.get("/user", {withCredentials: true});
 
     // Set to state
     // set({ user: res.data.user });        
@@ -37,7 +37,7 @@ const propsStore = create((set) => ({
   
   fetchProps: async () => {
     // Fetch the props
-    const res = await axios.get("/props");
+    const res = await axios.get("/props", {withCredentials: true});
 
     // Set to state
     set({ props: res.data.props });
@@ -60,7 +60,7 @@ const propsStore = create((set) => ({
     e.preventDefault();
 
     const { createForm, props } = propsStore.getState();
-    const res = await axios.post("/props", createForm);
+    const res = await axios.post("/props", createForm, {withCredentials: true});
 
     set({
       props: [...props, res.data.prop],
@@ -77,7 +77,7 @@ const propsStore = create((set) => ({
 
   deleteProp: async (_id) => {
     // Delete the prop
-    await axios.delete(`/props/${_id}`);
+    await axios.delete(`/props/${_id}`, {withCredentials: true});
     const { props } = propsStore.getState();
 
     // Update state
@@ -127,7 +127,7 @@ const propsStore = create((set) => ({
       dollarVal,
       dateAquired,
       uploadFile,
-    });
+    }, {withCredentials: true});
 
     // Update state
     const newProps = [...props];

@@ -20,8 +20,23 @@ export default function Admin () {
   });
 
   // for CSV download
-  const csvData = store.users
+  const csvData = 
+  store.users ?
+    [
+    ['First Name', 'Last Name', 'Date of Birth', 'Email', 'Role'],
+    ...store.users.map((user) => [
+      user.fname,
+      user.lname,
+      new Date(user.dob).toLocaleDateString('en-us', {year: 'numeric', month: 'short', day: 'numeric'}),
+      user.email,
+      user.role
+    ])
+    ]
+    :
+    [];
 
+
+  // useState for search
     const [searchTerm, setSearchTerm] = useState("");
     console.log(store.users);
 
@@ -46,6 +61,7 @@ export default function Admin () {
           </Col>
         </Row>
 
+{store.users &&
         <Row>
           <Col>
           <Input icon='search' 
@@ -57,14 +73,15 @@ export default function Admin () {
           <Col align="right">
           
           <button className="ui labeled icon button tiny"><i className="download icon"></i>
-          {store.users &&
+          
             <CSVLink data={csvData}>Download</CSVLink>
-          }
+          
             </button>
           <button onClick={handlePrint} className="ui labeled icon button tiny"><i className="print icon"></i>Print</button>
 
       </Col>
           </Row>
+}
         <Row>
           <Col>
             <div align="center">
@@ -77,13 +94,16 @@ export default function Admin () {
         <Col xs={3}>
           <h4>User's Name</h4>
         </Col>
-        <Col xs={3}>
+        <Col xs={2}>
         <h4>Date of Birth</h4>
         </Col>
         <Col xs={4}>
         <h4>Email Address</h4>
         </Col>
-        <Col align="right">
+        <Col xs={1}>
+        <h4>Role</h4>
+        </Col>
+        <Col xs={2} align="right">
         <h4>Actions</h4>
         </Col>
       </Row>
@@ -98,20 +118,28 @@ export default function Admin () {
         <Col>
 
 
-{store.users &&
+{store.users && store.users.length > 0 ? (
     
     store.users.filter((user) => {
       if (searchTerm === "") {
         console.log("empty");
         return user;
       } else if (user.fname.toLowerCase().includes(searchTerm.toLowerCase()) ||
-      user.lname.toLowerCase().includes(searchTerm.toLowerCase())) {
+      user.lname.toLowerCase().includes(searchTerm.toLowerCase()) ||
+      user.email.toLowerCase().includes(searchTerm.toLowerCase()) ||
+      user.dob.toLowerCase().includes(searchTerm.toLowerCase()) ||
+      user.role.toLowerCase().includes(searchTerm.toLowerCase())) {
         console.log("search term");
         return user;
       }
     }).map((user) => (
       <User user={user} key={user._id} />
-    ))}
+    ))
+  ) : (
+    <div align="center" className="alert-text">No users found</div>
+  )}
+    
+  
         </Col>
       </Row>
       <Row>

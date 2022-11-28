@@ -36,7 +36,7 @@ export default function Props() {
     [];
 
 
-  
+  // console.log(store.props.length)
 
 
 
@@ -67,6 +67,7 @@ export default function Props() {
                 
           </Col>
         </Row>
+        {store.props &&
         <Row>
           <Col>
           <Input icon='search' 
@@ -78,15 +79,15 @@ export default function Props() {
           <Col align="right">
           
                 <button className="ui labeled icon button tiny"><i className="download icon"></i>
-                {store.props &&
+                
                   <CSVLink data={csvData}>Download</CSVLink>
-                }
+                
                   </button>
                 <button onClick={handlePrint} className="ui labeled icon button tiny"><i className="print icon"></i>Print</button>
 
             </Col>
         </Row>
-        
+      }
         <Row>
           <Col>
             <div align="center">
@@ -122,7 +123,7 @@ export default function Props() {
       <Row>
         <Col>
         
-        {store.props &&
+        {store.props && store.props.length > 0 ? (
     
     store.props.filter((prop) => {
       if (searchTerm === "") {
@@ -134,7 +135,10 @@ export default function Props() {
       }
     }).map((prop) => (
       <Prop prop={prop} key={prop._id} />
-    ))}
+    ))  
+  ) : (
+    <div><p className="alert-text">No property found.  You should add some.</p></div>
+  )}
 
         </Col>
       </Row>
