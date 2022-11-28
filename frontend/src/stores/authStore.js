@@ -73,14 +73,13 @@ const authStore = create((set) => ({
                 password: "",
             },
         });
-
-        console.log(res);
     },
 
     checkAuth: async () => {
         try {
             await axios.get("/check-auth");
             set({loggedIn: true});
+            console.log("User is logged in");
         } catch (err) {
             set({loggedIn: false});
         }
