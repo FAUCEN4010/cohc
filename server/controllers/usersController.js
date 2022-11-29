@@ -60,8 +60,8 @@ async function login(req, res) {
         secure: true,
         //secure: process.env.NODE_ENV === "production",  
     });
-    console.log("is secure: ", res.cookie.Authorization.secure);
-    console.log("cookie set. token: ", token);
+    
+    console.log("cookie set. token: ", res.cookie);
 
     // send response
     res.sendStatus(200);
