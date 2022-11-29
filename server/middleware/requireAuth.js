@@ -5,12 +5,10 @@ const User = require("../models/user");
 async function requireAuth(req, res, next) {
     try{
     // read token off cookieParser
-    //const token = req.cookies.Authorization;
-    const token = req.signedCookies.Authorization;
+    const token = req.cookies.Authorization;
     console.log("token: ", token);
     console.log('Cookies: ', req.cookies);
-    console.log('Signed Cookies: ', req.signedCookies);
-
+    
     // decode the token 
     const decoded = jwt.verify(token, process.env.SECRET);
     console.log(decoded);
