@@ -18,3 +18,18 @@ password: password
 10. **There is only one administrator account for seeing administrator functions
 username: admin@admin.com
 password: administrator**
+
+##### Walkthrough video at: [https://youtu.be/cgw5u5T-zVU](https://youtu.be/cgw5u5T-zVU)
+
+##### User Stories
+[x] User shall be able to create secure property account
+[x] User shall be able to create  property records
+[x] User shall be able to update property records
+[x] User shall be able to delete property records
+[x] User shall be able to download property records
+[x] User shall be able to print property records
+[x] Administrative user shall be able to access all user accounts
+[x] Administrative user shall be able to delete user accounts
+[x] Administrative user shall be able to download all user accounts
+[x] Administrative user shall be able to print all user accounts
+
