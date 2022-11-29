@@ -57,12 +57,12 @@ async function login(req, res) {
         expires: new Date(exp),
         httpOnly: true,
         sameSite: false,
-        secure: true,
-        // secure: process.env.NODE_ENV === "production",  
+        secure: process.env.NODE_ENV === "production",  
     });
-    console.log("cookie set", token);
+    console.log("is secure: ", res.secure);
+    console.log("cookie set. token: ", token);
 
-    //send back token
+    // send response
     res.sendStatus(200);
     } catch (error) {
         console.log(error);
