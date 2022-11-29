@@ -62,7 +62,8 @@ async function login(req, res) {
         //secure: process.env.NODE_ENV === "production",  
     });
     console.log("token in usersController: ", token);
-    console.log("cookie set. req.cookie in usersController: ", req.cookie);
+    console.log("cookie set. req.cookie in usersController: ", req.cookies);
+    console.log("cookie set. req.signedCookie in usersController: ", req.signedCookie);
 
     // send response
     res.sendStatus(200);
