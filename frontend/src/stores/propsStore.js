@@ -147,6 +147,11 @@ const propsStore = create((set) => ({
       },
     });
   },
+  
+  logout: async () => {
+    await axios.get("/logout", {withCredentials: true});
+    set({loggedIn: false});
+}
 }));
 
 export default propsStore;

@@ -14,7 +14,7 @@ if (process.env.NODE_ENV === 'production') {
 //axios.defaults.baseURL = "http://localhost:3009";
 
 // production only
-axios.defaults.baseURL = "http://cohc-server.onrender.com";
+axios.defaults.baseURL = "http://cohc-server.onrender.com/";
 
 // do not use for production or development
 // axios.defaults.withCredentials = true;

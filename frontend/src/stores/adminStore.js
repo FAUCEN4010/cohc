@@ -101,6 +101,11 @@ const adminStore = create((set) => ({
         }
     },
 
+    logout: async () => {
+        await axios.get("/logout", {withCredentials: true});
+        set({loggedIn: false});
+    }
+
 
 }));
 
