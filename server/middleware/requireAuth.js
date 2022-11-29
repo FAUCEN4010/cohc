@@ -3,13 +3,10 @@ const User = require("../models/user");
 
 
 async function requireAuth(req, res, next) {
-    try{
+    try {
     // read token off cookieParser
     const token = req.cookies.Authorization;
-    
     console.log("token in requireAuth: ", token);
-    console.log('Cookies in requireAuth: ', req.cookies.Authorization);
-    
     
     // decode the token 
     const decoded = jwt.verify(token, process.env.SECRET);
@@ -18,7 +15,7 @@ async function requireAuth(req, res, next) {
     // check expiration
     if (decoded.exp < Date.now()) return res.status(401).send("Token expired");
     console.log("Token is valid"); 
-
+ 
 
     // find user decoded sub
     const user = await User.findById(decoded.sub);
@@ -29,10 +26,10 @@ async function requireAuth(req, res, next) {
 
     // continue on
     next();
-    } catch (error) {
+    } catch (error) { 
         console.log(error);
         res.sendStatus(401);
     }
 }
-
+ 
 module.exports = requireAuth;

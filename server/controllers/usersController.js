@@ -65,7 +65,7 @@ async function login(req, res) {
     });
     console.log("token in usersController: ", token);
 
-    // send response
+    // send back a response
     res.sendStatus(200);
     } catch (error) {
         console.log(error);
