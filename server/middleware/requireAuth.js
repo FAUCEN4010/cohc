@@ -5,7 +5,8 @@ const User = require("../models/user");
 async function requireAuth(req, res, next) {
     try{
     // read token off cookieParser
-    const token = req.cookies.Authorization;
+    //const token = req.cookies.Authorization;
+    const token = req.signedCookies.Authorization;
     console.log("token: ", token);
 
     // decode the token 
