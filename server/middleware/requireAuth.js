@@ -6,8 +6,8 @@ async function requireAuth(req, res, next) {
     try{
     // read token off cookieParser
     const token = req.cookies.Authorization;
-    console.log("token: ", token);
-    console.log('Cookies: ', req.cookies);
+    console.log("token in requireAuth: ", token);
+    console.log('Cookies in requireAuth: ', req.cookies);
     
     // decode the token 
     const decoded = jwt.verify(token, process.env.SECRET);
