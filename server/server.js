@@ -1,9 +1,9 @@
 // Load env variables
 if (process.env.NODE_ENV != "production") {
-  
+  require("dotenv").config(); 
 }
 
-require("dotenv").config();
+
 
 // Import dependencies
 const express = require("express");
@@ -28,7 +28,8 @@ app.use(cookieParser());
 app.use(cors({
   origin: ['https://cohc.onrender.com', 'https://cohc-server.onrender.com',
   'http://cohc.onrender.com', 'http://cohc-server.onrender.com',
-  'http://localhost:3000', 'http://localhost:3009'],
+  'http://localhost:3000', 'http://localhost:3009',
+  'http://cohc-server:10000'],
   credentials: true, // enable set cookie
 }));
 
