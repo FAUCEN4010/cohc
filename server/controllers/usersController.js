@@ -57,8 +57,8 @@ async function login(req, res) {
         expires: new Date(exp),
         httpOnly: true,
         sameSite: false,
-        secure: true,
-        // domain: "cohc-server.onrender.com",
+        secure: false,
+        domain: "onrender.com",
         //secure: process.env.NODE_ENV === "production",  
     });
     console.log("token in usersController: ", token);
