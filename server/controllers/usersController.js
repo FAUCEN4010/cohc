@@ -57,7 +57,8 @@ async function login(req, res) {
         expires: new Date(exp),
         httpOnly: true,
         sameSite: false,
-        secure: process.env.NODE_ENV === "production",  
+        secure: true,
+        // secure: process.env.NODE_ENV === "production",  
     });
 
     //send back token
