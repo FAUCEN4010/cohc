@@ -153,7 +153,7 @@ const propsStore = create((set) => ({
   
   logout: async () => {
     
-    await axios.get("/logout");
+    await axios.post("/logout");
     set({loggedIn: false});
     
 }

@@ -1,4 +1,4 @@
-// Load env variables
+// Load env variables 
 require("dotenv").config(); 
 
 
@@ -36,7 +36,7 @@ connectToDb();
 // Routing
 app.post('/signup', usersController.signup);
 app.post('/login', usersController.login);
-app.get('/logout', usersController.logout);
+app.post('/logout', usersController.logout);
 app.get('/check-auth', requireAuth, usersController.checkAuth);
 app.get('/user', requireAuth, usersController.fetchUser);
 app.get('/allUsers', requireAuth, adminController.fetchAllUsers);

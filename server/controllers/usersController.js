@@ -50,20 +50,20 @@ async function login(req, res) {
 
     //create jwt token
     const exp = Date.now() + 1000 * 60 * 60 * 24 * 30; // 30 days
-    const token = jwt.sign({ sub: user._id, exp }, process.env.SECRET);
+    const secret = process.env.SECRET
+    const token = jwt.sign({ sub: user._id, exp }, secret);
 
     //set cookie
-    res.cookie("Authorization", token, { 
+    res.cookie("Authorization", token, secret, { 
         expires: new Date(exp),
         httpOnly: true,
-        sameSite: false,
-        secure: false,
-        domain: "onrender.com",
+        sameSite: "lax",
+        secure: true,  
+        signed: true,
+
         //secure: process.env.NODE_ENV === "production",  
     });
     console.log("token in usersController: ", token);
-    console.log("cookie set. req.cookie in usersController: ", req.cookies);
-    
 
     // send response
     res.sendStatus(200);
@@ -72,10 +72,11 @@ async function login(req, res) {
         res.sendStatus(400);
     }
 }
-
-async function logout(req, res) {
+ 
+function logout(req, res) { 
     try {
         res.clearCookie("Authorization");
+        console.log('Cookies in logout: ', req.cookies);
         res.sendStatus(200);
     } catch (error) {
         console.log(error);
