@@ -8,6 +8,8 @@ async function requireAuth(req, res, next) {
     //const token = req.cookies.Authorization;
     const token = req.signedCookies.Authorization;
     console.log("token: ", token);
+    console.log('Cookies: ', req.cookies);
+    console.log('Signed Cookies: ', req.signedCookies);
 
     // decode the token 
     const decoded = jwt.verify(token, process.env.SECRET);
