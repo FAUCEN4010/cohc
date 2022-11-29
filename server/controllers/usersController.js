@@ -57,9 +57,10 @@ async function login(req, res) {
         expires: new Date(exp),
         httpOnly: true,
         sameSite: false,
-        secure: process.env.NODE_ENV === "production",  
+        secure: true,
+        //secure: process.env.NODE_ENV === "production",  
     });
-    console.log("is secure: ", res.cookie.secure);
+    console.log("is secure: ", res.cookie.Authorization.secure);
     console.log("cookie set. token: ", token);
 
     // send response
