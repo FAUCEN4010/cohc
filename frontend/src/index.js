@@ -14,10 +14,14 @@ if (process.env.NODE_ENV === 'production') {
 //axios.defaults.baseURL = "http://localhost:3009";
 
 // production only
-axios.defaults.baseURL = "http://cohc-server.onrender.com/";
+//axios.defaults.baseURL = "http://cohc-server.onrender.com";
+axios.defaults.baseURL = "https://cohc.herokuapp.com";
+
+// heroku only
+
 
 // do not use for production or development
-// axios.defaults.withCredentials = true;
+axios.defaults.withCredentials = true;
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(<App />);

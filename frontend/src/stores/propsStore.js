@@ -1,7 +1,10 @@
 import create from "zustand";
 import axios from "axios";
+import { useNavigate } from "react-router-dom";
+
 
 const propsStore = create((set) => ({
+  
   props: null,
 
   createForm: {
@@ -21,7 +24,7 @@ const propsStore = create((set) => ({
 
   fetchUser: async () => {
     // Fetch the user
-    const res = await axios.get("/user", {withCredentials: true});
+    const res = await axios.get("/user");
 
     // Set to state
     // set({ user: res.data.user });        
@@ -37,7 +40,7 @@ const propsStore = create((set) => ({
   
   fetchProps: async () => {
     // Fetch the props
-    const res = await axios.get("/props", {withCredentials: true});
+    const res = await axios.get("/props");
 
     // Set to state
     set({ props: res.data.props });
@@ -60,7 +63,7 @@ const propsStore = create((set) => ({
     e.preventDefault();
 
     const { createForm, props } = propsStore.getState();
-    const res = await axios.post("/props", createForm, {withCredentials: true});
+    const res = await axios.post("/props", createForm);
 
     set({
       props: [...props, res.data.prop],
@@ -77,7 +80,7 @@ const propsStore = create((set) => ({
 
   deleteProp: async (_id) => {
     // Delete the prop
-    await axios.delete(`/props/${_id}`, {withCredentials: true});
+    await axios.delete(`/props/${_id}`);
     const { props } = propsStore.getState();
 
     // Update state
@@ -127,7 +130,7 @@ const propsStore = create((set) => ({
       dollarVal,
       dateAquired,
       uploadFile,
-    }, {withCredentials: true});
+    });
 
     // Update state
     const newProps = [...props];
@@ -149,8 +152,10 @@ const propsStore = create((set) => ({
   },
   
   logout: async () => {
-    await axios.get("/logout", {withCredentials: true});
+    
+    await axios.get("/logout");
     set({loggedIn: false});
+    
 }
 }));
 

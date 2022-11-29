@@ -1,14 +1,14 @@
-## CEN4010 Principlies of Software Engineering
+## CEN4010 Principles of Software Engineering
 ### Term Project: Property Management Application for the City of Happy Citizenship
 
-#### Group 2: Omar Muniz, Martin Nieves Hernandez, Ivan Paez, Michaela Sebastian, Jujni Yamamoto, Dan Zimmerman 
+#### Group 2: Omar Muniz, Martin Nieves Hernandez, Ivan Paez, Michaela Sebastian, Junji Yamamoto, Dan Zimmerman 
 
 ##### Instructions:
 1. Clone repository
 2. In a terminal window, `cd` into `server` directory
 3. Type `npm install` and let the server dependencies install
 4. Type `npm run dev` and the sever will start
-5. In a new terminal windoq, `cd` into the `frontend` directory
+5. In a new terminal window, `cd` into the `frontend` directory
 6. Type `npm install` and let the frontend dependencies install
 7. Type `npm start` to start the frontend application
 8. A browser window will open to [http://localhost:3000](http://localhost:3000) and run the application

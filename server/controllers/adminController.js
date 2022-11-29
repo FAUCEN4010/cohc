@@ -120,8 +120,9 @@ async function login(req, res) {
     res.cookie("Authorization", token, { 
         expires: new Date(exp),
         httpOnly: true,
-        sameSite: "lax",
-        secure: process.env.NODE_ENV === "production",  
+        sameSite: "none",
+        secure: process.env.NODE_ENV === "production", 
+        domain: "cohc.render.com"
     });
 
     //send back token

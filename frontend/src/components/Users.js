@@ -56,7 +56,7 @@ export default function Admin () {
               ) : (
                 <span>&nbsp; Administrator &nbsp;</span>
               )}
-                <Button variant="success" size="sm" onClick={store.logout}>Log Out</Button>&nbsp;</h6>
+                <Button variant="success" size="sm" onClick={store.logout} href="/">Log Out</Button>&nbsp;</h6>
                 <br />
           </Col>
         </Row>
