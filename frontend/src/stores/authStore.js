@@ -104,7 +104,24 @@ const authStore = create((set) => ({
 
     logout: async () => {
         await axios.get("/logout");
-        set({loggedIn: false});
+        document.cookie = "Authorization=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;"
+        
+        set({
+            loggedIn: false,
+            cookie: {
+                name: "Authorization",
+                path: "/",
+                value: null,
+                expires: new Date(0),
+                
+                sameSite: "lax",
+                secure: true,
+                signed: true,
+            }
+            
+        });
+
+
     }
 
 }));

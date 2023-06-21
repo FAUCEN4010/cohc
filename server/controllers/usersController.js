@@ -56,7 +56,7 @@ async function login(req, res) {
     //set cookie
     res.cookie("Authorization", token, secret, { 
         expires: new Date(exp),
-        httpOnly: true,
+        
         sameSite: "lax",
         secure: true,  
         signed: true,
@@ -76,6 +76,16 @@ async function login(req, res) {
 function logout(req, res) { 
     try {
         res.clearCookie("Authorization");
+        res.cookie("Authorization", {
+            name: "Authorization",
+            path: "/",
+            value: null,
+            expires: new Date(0),
+            
+            sameSite: "lax",
+            secure: true,
+            signed: true,
+        });
         console.log('Cookies in logout: ', req.cookies);
         res.sendStatus(200);
     } catch (error) {
