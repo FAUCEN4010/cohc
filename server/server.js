@@ -11,6 +11,9 @@ const propsController = require("./controllers/propsController");
 const usersController = require("./controllers/usersController");
 const adminController = require("./controllers/adminController");
 const requireAuth = require("./middleware/requireAuth");
+const swaggerUi = require('swagger-ui-express');
+const YAML = require('yamljs');
+const swaggerDocument = YAML.load('./swagger.yml');
 
 
 // Create an express app
@@ -51,10 +54,13 @@ app.put("/props/:id", requireAuth, propsController.updateProp);
 app.delete("/props/:id", requireAuth, propsController.deleteProp);
 
 
+// Swagger API Documentation
+app.use('/api-docs', swaggerUi.serve, swaggerUi.setup(swaggerDocument));
+
+
 // Start our server
 const port = process.env.PORT || 3009;
 app.listen(port, () => {
   console.log(`Server listening on port ${port}`);
 });  
-
 

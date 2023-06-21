@@ -1,0 +1,253 @@
+openapi: 3.0.1
+info:
+  title: COHC API
+  version: 1.0.0
+
+servers:
+  - url: http://localhost:3009
+  - url: https://cohc-server.onrender.com
+
+paths:
+  /signup:
+    post:
+      summary: Signup a user
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                name:
+                  type: string
+                  description: The name of the user.
+                email:
+                  type: string
+                  description: The email of the user.
+                password:
+                  type: string
+                  description: The password of the user.
+      responses:
+        "200":
+          description: User signup succeeded.
+        "400":
+          description: Bad request.
+
+  /login:
+    post:
+      summary: Login a user
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                email:
+                  type: string
+                  description: The email of the user.
+                password:
+                  type: string
+                  description: The password of the user.
+      responses:
+        "200":
+          description: User login succeeded.
+        "401":
+          description: Unauthorized.
+
+  /logout:
+    post:
+      summary: Logout a user
+      responses:
+        "200":
+          description: User logout succeeded.
+        "401":
+          description: Unauthorized.
+
+  /check-auth:
+    get:
+      summary: Check if a user is authenticated
+      security:
+        - cookieAuth: []
+      responses:
+        "200":
+          description: User is authenticated.
+        "401":
+          description: Unauthorized.
+
+  /user:
+    get:
+      summary: Get information for authenticated user
+      security:
+        - cookieAuth: []
+      responses:
+        "200":
+          description: Fetch user succeeded.
+        "401":
+          description: Unauthorized.
+
+  /allUsers:
+    get:
+      summary: Get information for all users (admin only)
+      security:
+        - cookieAuth: []
+      responses:
+        "200":
+          description: Fetch all users succeeded.
+        "401":
+          description: Unauthorized.
+
+  /users/{id}:
+    delete:
+      summary: Delete a user by ID (admin only)
+      security:
+        - cookieAuth: []
+      parameters:
+        - in: path
+          name: id
+          required: true
+          schema:
+            type: string
+          description: User ID to delete
+      responses:
+        "200":
+          description: User deletion succeeded.
+        "401":
+          description: Unauthorized.
+
+  /admin:
+    get:
+      summary: Alias for getting authenticated user information
+      security:
+        - cookieAuth: []
+      responses:
+        "200":
+          description: Fetch user succeeded.
+        "401":
+          description: Unauthorized.
+
+  /props:
+    get:
+      summary: Get all props
+      security:
+        - cookieAuth: []
+      responses:
+        "200":
+          description: Fetch all props succeeded.
+        "401":
+          description: Unauthorized.
+
+    post:
+      summary: Create a new prop
+      security:
+        - cookieAuth: []
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                name:
+                  type: string
+                  description: The name of the prop.
+                description:
+                  type: string
+                  description: The description of the prop.
+                image:
+                  type: string
+                  description: The image of the prop.
+                category:
+                  type: string
+                  description: The category of the prop.
+                price:
+                  type: number
+                  description: The price of the prop.
+              required:
+                - name
+                - price
+      responses:
+        "200":
+          description: Prop creation succeeded.
+        "401":
+          description: Unauthorized.
+
+  /props/{id}:
+    get:
+      summary: Get a single prop by ID
+      security:
+        - cookieAuth: []
+      parameters:
+        - in: path
+          name: id
+          required: true
+          schema:
+            type: string
+          description: Prop ID to fetch
+      responses:
+        "200":
+          description: Fetch prop succeeded.
+        "401":
+          description: Unauthorized.
+
+    put:
+      summary: Update a prop by ID
+      security:
+        - cookieAuth: []
+      parameters:
+        - in: path
+          name: id
+          required: true
+          schema:
+            type: string
+          description: Prop ID to update
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                name:
+                  type: string
+                  description: The name of the prop.
+                description:
+                  type: string
+                  description: The description of the prop.
+                image:
+                  type: string
+                  description: The image of the prop.
+                category:
+                  type: string
+                  description: The category of the prop.
+                price:
+                  type: number
+                  description: The price of the prop.
+      responses:
+        "200":
+          description: Prop update succeeded.
+        "401":
+          description: Unauthorized.
+
+    delete:
+      summary: Delete a prop by ID
+      security:
+        - cookieAuth: []
+      parameters:
+        - in: path
+          name: id
+          required: true
+          schema:
+            type: string
+          description: Prop ID to delete
+      responses:
+        "200":
+          description: Prop deletion succeeded.
+        "401":
+          description: Unauthorized.
+
+securitySchemes:
+  cookieAuth:
+    type: apiKey
+    in: cookie
+    name: token
