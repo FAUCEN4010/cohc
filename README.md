@@ -1,5 +1,5 @@
 ## CEN4010 Principles of Software Engineering
-### Term Project: Property Management Application for the City of Happy Citizenship
+### Term Project: Property Management Application for the City of Happy Citizens
 
 #### Instructions:
 1. Clone repository
