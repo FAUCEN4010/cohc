@@ -16,6 +16,7 @@ password: password
 10. **There is only one administrator account for seeing administrator functions
 username: admin@admin.com
 password: administrator**
+11. API Documentation at [http://localhost:3009/api-docs](http://localhost:3009/api-docs)
 
 ##### Walkthrough video at: [https://youtu.be/cgw5u5T-zVU](https://youtu.be/cgw5u5T-zVU)
 
