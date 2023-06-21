@@ -49,7 +49,7 @@ app.get("/props/:id", requireAuth, propsController.fetchProp);
 app.post("/props", requireAuth, propsController.createProp);
 app.put("/props/:id", requireAuth, propsController.updateProp);
 app.delete("/props/:id", requireAuth, propsController.deleteProp);
- 
+
 
 // Start our server
 const port = process.env.PORT || 3009;

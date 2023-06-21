@@ -1,9 +1,7 @@
 ## CEN4010 Principles of Software Engineering
 ### Term Project: Property Management Application for the City of Happy Citizenship
 
-#### Group 2: Omar Muniz, Martin Nieves Hernandez, Ivan Paez, Michaela Sebastian, Junji Yamamoto, Dan Zimmerman 
-
-##### Instructions:
+#### Instructions:
 1. Clone repository
 2. In a terminal window, `cd` into `server` directory
 3. Type `npm install` and let the server dependencies install
